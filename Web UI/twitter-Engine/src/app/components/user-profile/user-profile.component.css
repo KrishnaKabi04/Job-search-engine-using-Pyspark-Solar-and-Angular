@@ -1,0 +1,56 @@
+
+.navbar-top-links li {
+    display: inline-block;
+    align-self: center;
+}
+
+.navbar-top-links li button {
+    padding: 10px 11px;
+    min-height: 39px;
+    margin-left: 117px;
+    margin-top: 4%;
+}
+
+a {
+    color: #337ab7;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.float-left {
+    float: left!important;
+}
+
+p{
+    text-align: justify;
+}
+
+.small, small {
+    font-size: 80% !important;
+    font-weight: 400 !important;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+  }
+
+  .photos {
+    margin: 10px 0;
+}
+
+.feed-photo {
+    max-height: 250px !important;
+    margin-right: 22px !important;
+}
+
+.btn-group1 {
+    position: relative;
+    vertical-align: middle;
+}

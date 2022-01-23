@@ -1,0 +1,133 @@
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+      </div>
+   </nav>
+</div>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-1">
+        <button class="btn btn-outline btn-danger  dim " type="button" style="margin-top: 4%;"><i class="fa fa-user"></i></button>
+    </div>
+    <div class="col-lg-9">
+        <h2 style="text-align: center; font-weight: bold;margin-top: 1%;">USER PROFILE PAGE</h2>
+    </div>
+    <div class="col-lg-2">
+        <ul class="nav navbar-top-links navbar-right">
+            <li>
+              <button [routerLink]="['']" class="btn btn-outline btn-danger btn-sm"><i class="fa fa-chevron-left"></i> Home Page</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInRight">
+        <div class="col-md-4">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Profile Detail</h5>
+                </div>
+                <div>
+                    <div class="ibox-content no-padding border-left-right">
+                        <img *ngIf="userobj.userProfileBannerURL ==''" alt="image" src="../../../assets/img/ny.jpg" class="img-fluid">
+                        <img *ngIf="userobj.userProfileBannerURL !=''" alt="image" src="{{userobj.userProfileBannerURL}}" class="img-fluid">
+                    </div>
+                    <div class="ibox-content profile-content">
+                        <h4><strong>{{userobj.userName}}</strong></h4>
+                        <p><i class="fa fa-map-marker"></i> Theodore Lowe Ap #867-859 Sit Rd</p>
+                        <h5>
+                            About me
+                        </h5>
+                        <p>
+                            Enjoying my life! Having Fun! Gonna love this life, Awesome :-)
+                        </p>
+                        <div class="row m-t-lg">
+                            <div class="col-md-4">
+                                <span class="bar" style="display: none;">5,3,9,6,5,9,7,3,5,2</span><svg class="peity" height="16" width="32"><rect fill="#1ab394" x="0" y="7.111111111111111" width="2.3" height="8.88888888888889"></rect><rect fill="#d7d7d7" x="3.3" y="10.666666666666668" width="2.3" height="5.333333333333333"></rect><rect fill="#1ab394" x="6.6" y="0" width="2.3" height="16"></rect><rect fill="#d7d7d7" x="9.899999999999999" y="5.333333333333334" width="2.3" height="10.666666666666666"></rect><rect fill="#1ab394" x="13.2" y="7.111111111111111" width="2.3" height="8.88888888888889"></rect><rect fill="#d7d7d7" x="16.5" y="0" width="2.3" height="16"></rect><rect fill="#1ab394" x="19.799999999999997" y="3.555555555555557" width="2.3" height="12.444444444444443"></rect><rect fill="#d7d7d7" x="23.099999999999998" y="10.666666666666668" width="2.3" height="5.333333333333333"></rect><rect fill="#1ab394" x="26.4" y="7.111111111111111" width="2.3" height="8.88888888888889"></rect><rect fill="#d7d7d7" x="29.7" y="12.444444444444445" width="2.3" height="3.5555555555555554"></rect></svg>
+                                <h5><strong>{{totl}}</strong> Posts</h5>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="line" style="display: none;">5,3,9,6,5,9,7,3,5,2</span><svg class="peity" height="16" width="32"><polygon fill="#1ab394" points="0 15 0 7.166666666666666 3.5555555555555554 10.5 7.111111111111111 0.5 10.666666666666666 5.5 14.222222222222221 7.166666666666666 17.77777777777778 0.5 21.333333333333332 3.833333333333332 24.888888888888886 10.5 28.444444444444443 7.166666666666666 32 12.166666666666666 32 15"></polygon><polyline fill="transparent" points="0 7.166666666666666 3.5555555555555554 10.5 7.111111111111111 0.5 10.666666666666666 5.5 14.222222222222221 7.166666666666666 17.77777777777778 0.5 21.333333333333332 3.833333333333332 24.888888888888886 10.5 28.444444444444443 7.166666666666666 32 12.166666666666666" stroke="#169c81" stroke-width="1" stroke-linecap="square"></polyline></svg>
+                                <h5><strong>{{userobj.userFriendsCount}}</strong> Friends</h5>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="bar" style="display: none;">5,3,2,-1,-3,-2,2,3,5,2</span><svg class="peity" height="16" width="32"><rect fill="#1ab394" x="0" y="0" width="2.3" height="10"></rect><rect fill="#d7d7d7" x="3.3" y="4" width="2.3" height="6"></rect><rect fill="#1ab394" x="6.6" y="6" width="2.3" height="4"></rect><rect fill="#d7d7d7" x="9.899999999999999" y="10" width="2.3" height="2"></rect><rect fill="#1ab394" x="13.2" y="10" width="2.3" height="6"></rect><rect fill="#d7d7d7" x="16.5" y="10" width="2.3" height="4"></rect><rect fill="#1ab394" x="19.799999999999997" y="6" width="2.3" height="4"></rect><rect fill="#d7d7d7" x="23.099999999999998" y="4" width="2.3" height="6"></rect><rect fill="#1ab394" x="26.4" y="0" width="2.3" height="10"></rect><rect fill="#d7d7d7" x="29.7" y="6" width="2.3" height="4"></rect></svg>
+                                <h5><strong>{{userobj.userFollowersCount}}</strong> Followers</h5>
+                            </div>
+                        </div>
+                        <div class="user-button">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button *ngIf="userobj.userVerified == false" type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-times"></i> Not Verified User</button>
+                                    <button *ngIf="userobj.userVerified == true" type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-check"></i> Verified User</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+            </div>
+
+            <div class="col-lg-8" *ngIf="parameter.data ==''">
+                <div class="ibox-title">
+                 <h3 style="text-align: center;font-weight: bold;">No data Found!</h3>
+             </div>
+                <div class="social-feed-box" style="background: #fcbf4d;">
+                 <img src="../../../assets/img/no-data-found.png" class="img-fluid center">
+             </div>
+         </div>
+       
+        <div class="col-lg-8" *ngIf="parameter.data!=''">
+            <div class="ibox-title">
+                <h3 style="text-align: center;font-weight: bold;">User Tweets</h3>
+            </div>
+            <div class="social-feed-box" *ngFor="let item of parameter.data | paginate: { itemsPerPage: parameter.itemsPerPage, currentPage: parameter.p, totalItems: parameter.total }; let i=index">
+                <div class="social-avatar">
+                    <a routerLink="" routerLinkActive="active" class="float-left">
+                        <img *ngIf="userobj.userProfileImageURL ==''" alt="image" src="../../../assets/img/default_img.png" class="rounded-circle">
+                        <img *ngIf="userobj.userProfileImageURL !=''" alt="image" src="{{userobj.userProfileImageURL}}" class="rounded-circle">
+                    </a>  
+                    <div class="media-body">
+                        <a  routerLink="" routerLinkActive="active">
+                            {{userobj.userName}}
+                        </a>
+            
+                        <small class="text-muted">{{ item.tweetDateTime | date: "mediumDate" }} - {{ item.tweetDateTime | date: "shortTime" }}</small>
+                    </div>
+                </div>
+                <div class="social-body">
+                    <p>
+                        {{item.tweetText}}
+                    </p>
+                    <img *ngIf="item.tweetMediaURL.length == 1 " src="{{item.tweetMediaURL[0]}}" class="img-fluid">
+                    <div *ngIf="item.tweetMediaURL.length > 1 " class="photos" >
+                        <a target="_blank" href="{{item.tweetMediaURL[0]}}"> 
+                            <img alt="image" class="feed-photo" src="{{item.tweetMediaURL[0]}}">
+                        </a>
+                        <a target="_blank" href="{{item.tweetMediaURL[1]}}"> 
+                            <img alt="image" class="feed-photo" src="{{item.tweetMediaURL[1]}}">
+                        </a>
+                    </div>
+                    <div class="btn-group1">
+                        <button class="btn btn-danger btn-xs"><i class="fa fa-heart"></i> {{item.tweetFavoriteCount}}</button>
+                        <button class="btn btn-white btn-xs"><i class="fa fa-reply"></i>{{item.tweetReplyCount}}</button>
+                        <button class="btn btn-primary btn-xs"><i class="fa fa-retweet"></i> {{item.tweetQuoteCount}}</button>
+                    </div>
+                </div>
+                <div class="social-footer" *ngIf="item.tweetHashtags.length > 0 ">
+                    <div class="social-comment">
+                        <h5 class="tag-title">HashTags</h5>
+                        <ul class="tag-list" style="padding: 0">
+                            <li *ngFor="let i of item.tweetHashtags">
+                                <a target="_blank" routerLink="/hastags-list/{{i}}" routerLinkActive="active"><i class="fa fa-hashtag"></i> {{i}}</a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <pagination-controls class="my-pagination" (pageChange)="getPage($event)"></pagination-controls>
+        </div>
+    </div>
+</div>

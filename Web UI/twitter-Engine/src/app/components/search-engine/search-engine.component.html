@@ -1,0 +1,194 @@
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+       <i class="fa fa-search navbar-minimalize minimalize-styl-2 btn btn-primary"></i>
+            <div class="form-group navbar-form-custom">
+                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search" #mysearch  ngModel (ngModelChange)="Search(mysearch.value,'undefined')"/>
+            </div>
+    </div>
+     
+    </nav>
+    </div>
+
+
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <div class="row">
+
+            <div class="col-lg-3">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h3 style="text-align: center;font-weight: bold;">Twitter Search Engine</h3>
+                    </div>
+                    <div class="ibox-content inspinia-timeline">
+                <img src="../../../assets/img/Twitter-Logo.png" class="img-fluid" style="height: 200px; margin-top: 40px;">
+                <p style="margin-top: 40px;">
+                    Twitter is a free social networking microblogging service that allows registered members to broadcast short posts called tweets. Twitter members can broadcast tweets and follow other users' tweets by using multiple platforms and devices. Tweets and replies to tweets can be sent by cell phone text message, desktop client or by posting at the Twitter.com website. 
+                 </p>
+                 <p>
+                    The default settings for Twitter are public. Unlike Facebook or LinkedIn, where members need to approve social connections, anyone can follow anyone on publicTwitter. To weave tweets into a conversation thread or connect them to a general topic, members can add hashtags to a keyword in their post. The hashtag, which acts like a meta tag, is expressed as #keyword. 
+                   </p>
+                   <p> 
+                    Tweets, which may include hyperlinks, are limited to 140 characters, due to the constraints of Twitter's Short Message Service (SMS) delivery system. Because tweets can be delivered to followers in real time, they might seem like instant messages to the novice user. But unlike IMs that disappear when the user closes the application, tweets are also posted on the Twitter website. They are permanent, they are searchable and they are public. Anyone can search tweets on Twitter, whether they are a member or not. 
+                </p>
+              </div>  
+        </div>
+    </div>
+    
+    <div class="col-lg-6" *ngIf="parameter.data ==''">
+        <div class="ibox-title">
+         <h3 style="text-align: center;font-weight: bold;">Search To View Results!</h3>
+     </div>
+        <div class="social-feed-box" style="background: #f5f5f5;">
+         <img src="../../../assets/img/ds.png" class="img-fluid center">
+     </div>
+ </div>
+
+            <div class="col-lg-6" *ngIf="parameter.data!=''">
+                <div class="ibox-title">
+                    <h3 style="text-align: center;font-weight: bold;">Search Results</h3>
+                </div>
+                <div class="social-feed-box" *ngFor="let item of parameter.data | paginate: { itemsPerPage: parameter.itemsPerPage, currentPage: parameter.p, totalItems: parameter.total }; let i=index">
+                    <div class="social-avatar">
+                        <!-- Redirect to profile page -->
+                        <a target="_blank" routerLink="/profile/{{item.user.userID}}" routerLinkActive="active" class="float-left">
+                            <img *ngIf="item.user.userProfileImageURL ==''" alt="image" src="../../../assets/img/default_img.png">
+                            <img *ngIf="item.user.userProfileImageURL !=''" alt="image" src="{{item.user.userProfileImageURL}}">
+                        </a>
+                        <div class="media-body">
+                            <a target="_blank" routerLink="/profile/{{item.user.userID}}" routerLinkActive="active">
+                                {{item.user.userName}}
+                            </a>
+                            <small class="text-muted">{{ item.tweet.tweetDateTime | date: "mediumDate" }} - {{ item.tweet.tweetDateTime | date: "shortTime" }}</small>
+                        </div>
+                    </div>
+                    <div class="social-body">
+                        <p>
+                            {{item.tweet.tweetText}}
+                        </p>
+                        <img *ngIf="item.tweet.tweetMediaURL.length == 1 " src="{{item.tweet.tweetMediaURL[0]}}" class="img-fluid">
+                        <div *ngIf="item.tweet.tweetMediaURL.length > 1 " class="photos" >
+                            <a target="_blank" href="{{item.tweet.tweetMediaURL[0]}}"> 
+                                <img alt="image" class="feed-photo" src="{{item.tweet.tweetMediaURL[0]}}">
+                            </a>
+                            <a target="_blank" href="{{item.tweet.tweetMediaURL[1]}}"> 
+                                <img alt="image" class="feed-photo" src="{{item.tweet.tweetMediaURL[1]}}">
+                            </a>
+                        </div>
+                        <div class="btn-group1">
+                            <button class="btn btn-danger btn-xs"><i class="fa fa-heart"></i> {{item.tweet.tweetFavoriteCount}}</button>
+                            <button class="btn btn-white btn-xs"><i class="fa fa-reply"></i>{{item.tweet.tweetReplyCount}}</button>
+                            <button class="btn btn-primary btn-xs"><i class="fa fa-retweet"></i> {{item.tweet.tweetQuoteCount}}</button>
+                        </div>
+                    </div>
+                    <div class="social-footer" *ngIf="item.tweet.tweetHashtags.length > 0 ">
+                        <div class="social-comment">
+                            <h5 class="tag-title">HashTags</h5>
+                            <ul class="tag-list" style="padding: 0">
+                                <li *ngFor="let i of item.tweet.tweetHashtags">
+                                    <a target="_blank" routerLink="/hastags-list/{{i}}" routerLinkActive="active"><i class="fa fa-hashtag"></i> {{i}}</a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+                    <pagination-controls class="my-pagination" (pageChange)="getPage($event)"></pagination-controls>
+
+            </div>
+
+            <div class="col-lg-3">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h3 style="text-align: center;font-weight: bold;">Trending Jobs</h3>
+                    </div>
+                    <div class="ibox-content inspinia-timeline">
+
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-4 date">
+                                    <i class="fa fa-briefcase"></i>
+                                    1)
+                                    <br>
+                                </div>
+                                <div class="col content no-top-border">
+                                    <p class="m-b-xs"><strong>Engineer</strong></p>
+
+                                    <p>
+                                        Engineers, as practitioners of engineering, are professionals who invent, design, analyze, build and test machines, complex systems, structures, gadgets and materials to fulfill functional objectives and requirements.
+                                        
+                                    </p>
+
+                                    <p><span data-diameter="40" class="updating-chart" style="display: none;">7,2,7,7,3,5,2,5,5,5,8,4,4,1,3,1,2,3,8,9,2,2,3,0,8,3,2,3,1,4,8,1,7,7,6,6,5</span><svg class="peity" height="16" width="64"><polygon fill="#1ab394" points="0 15 0 3.833333333333332 1.7777777777777777 12.166666666666666 3.5555555555555554 3.833333333333332 5.333333333333333 3.833333333333332 7.111111111111111 10.5 8.88888888888889 7.166666666666666 10.666666666666666 12.166666666666666 12.444444444444443 7.166666666666666 14.222222222222221 7.166666666666666 16 7.166666666666666 17.77777777777778 2.166666666666666 19.555555555555554 8.833333333333332 21.333333333333332 8.833333333333332 23.11111111111111 13.833333333333334 24.888888888888886 10.5 26.666666666666664 13.833333333333334 28.444444444444443 12.166666666666666 30.22222222222222 10.5 32 2.166666666666666 33.77777777777778 0.5 35.55555555555556 12.166666666666666 37.33333333333333 12.166666666666666 39.11111111111111 10.5 40.888888888888886 15.5 42.666666666666664 2.166666666666666 44.44444444444444 10.5 46.22222222222222 12.166666666666666 48 10.5 49.77777777777777 13.833333333333334 51.55555555555555 8.833333333333332 53.33333333333333 2.166666666666666 55.11111111111111 13.833333333333334 56.888888888888886 3.833333333333332 58.666666666666664 3.833333333333332 60.44444444444444 5.5 62.22222222222222 5.5 64 7.166666666666666 64 15"></polygon><polyline fill="transparent" points="0 3.833333333333332 1.7777777777777777 12.166666666666666 3.5555555555555554 3.833333333333332 5.333333333333333 3.833333333333332 7.111111111111111 10.5 8.88888888888889 7.166666666666666 10.666666666666666 12.166666666666666 12.444444444444443 7.166666666666666 14.222222222222221 7.166666666666666 16 7.166666666666666 17.77777777777778 2.166666666666666 19.555555555555554 8.833333333333332 21.333333333333332 8.833333333333332 23.11111111111111 13.833333333333334 24.888888888888886 10.5 26.666666666666664 13.833333333333334 28.444444444444443 12.166666666666666 30.22222222222222 10.5 32 2.166666666666666 33.77777777777778 0.5 35.55555555555556 12.166666666666666 37.33333333333333 12.166666666666666 39.11111111111111 10.5 40.888888888888886 15.5 42.666666666666664 2.166666666666666 44.44444444444444 10.5 46.22222222222222 12.166666666666666 48 10.5 49.77777777777777 13.833333333333334 51.55555555555555 8.833333333333332 53.33333333333333 2.166666666666666 55.11111111111111 13.833333333333334 56.888888888888886 3.833333333333332 58.666666666666664 3.833333333333332 60.44444444444444 5.5 62.22222222222222 5.5 64 7.166666666666666" stroke="#169c81" stroke-width="1" stroke-linecap="square"></polyline></svg></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-4 date">
+                                    <i class="fa fa-file"></i>
+                                    2)
+                                    <br>
+                                </div>
+                                <div class="col content">
+                                    <p class="m-b-xs"><strong>Coordinator</strong></p>
+                                    <p>A coordinator is a general title for a person who brings together various elements or individuals to complete a project.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-4 date">
+                                    <i class="fa fa-coffee"></i>
+                                    3)
+                                    <br>
+                                </div>
+                                <div class="col content">
+                                    <p class="m-b-xs"><strong>Manager</strong></p>
+                                    <p>
+                                        The manager is an employee who is responsible for planning, directing, and overseeing the operations and fiscal health of a business unit, division, department, or operating unit within an organization. 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-4 date">
+                                    <i class="fa fa-phone"></i>
+                                    4)
+                                    <br>
+                                </div>
+                                <div class="col content">
+                                    <p class="m-b-xs"><strong>Analyst</strong></p>
+                                    <p>
+                                        An analyst gathers, interprets, and uses complex data to develop actionable steps that will improve processes and optimize results.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-4 date">
+                                    <i class="fa fa-user-md"></i>
+                                    5)
+                                    <br>
+                                </div>
+                                <div class="col content">
+                                    <p class="m-b-xs"><strong>Developer</strong></p>
+                                    <p>
+                                        Researching, designing, implementing, and managing software programs. Testing and evaluating new programs.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button [routerLink]="['trending-jobs']" type="button" class="btn btn-w-m btn-info" style="margin-top: 5%;margin-left: 38%;">View More</button>
+                </div>
+            </div>
+          
+        </div>
+    </div>
+
+
+    

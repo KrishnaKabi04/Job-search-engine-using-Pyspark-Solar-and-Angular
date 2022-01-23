@@ -1,0 +1,22 @@
+a {
+    color: #337ab7;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.float-left {
+    float: left!important;
+}
+
+p{
+    text-align: justify;
+}
+
+.small, small {
+    font-size: 80% !important;
+    font-weight: 400 !important;
+}

@@ -1,0 +1,19 @@
+
+.navbar-top-links li {
+    display: inline-block;
+    align-self: center;
+}
+
+.navbar-top-links li button {
+    padding: 10px 11px;
+    min-height: 39px;
+    margin-left: 117px;
+    margin-top: 4%;
+}
+
+ul.notes li div i {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: inherit;
+}

@@ -1,7 +1,9 @@
 This file talks about installation step required to install Pyspark and run the script "Tweets_preprocessing.py"
 
-######################## Installation #############################
+## Installation 
+
 Using Jupyter notebook: 
+
 conda create ---name envname
 Check java is installation: java -version
 conda install python=3.6
@@ -11,7 +13,7 @@ pip install spark-nlp==3.3.0
 pip install jupyter notebook
 Restart terminal.
 
-#### Using Command Line and not conda environment #####
+### Using Command Line and not conda environment
 install spark through  jar and not using conda 
 
 update the .bashrc file: 
@@ -23,7 +25,7 @@ export PATH=$PATH:$SCALA_HOME
 export PYSPARK_HOME=${SPARK_HOME}/bin/pyspark
 
 
-### Variable to update ###
+### Variable to update
 LOG_DIR: path where logfile should be created
 destpath: where files processedd would be saved in both parquet and csv format
 input_path: path to pick the data files from
